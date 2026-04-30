@@ -1,3 +1,5 @@
+/*  Reset and Global Vars*/
+
 * {
   margin: 0;
   padding: 0;
@@ -5,9 +7,17 @@
   --gap-social: 32px;
 }
 
+/* Dark Theme Vars */
+
+/*DarkTheme: Variáveis do modo noturno */
 :root {
   --text-color: white;
-  --bg-url: url(./assets/assets/bg-mobile.jpg);
+  --bg-url: linear-gradient(
+    135deg,
+    blue 0%,
+    rgb(0, 0, 120) 50%,
+    rgb(0, 0, 60) 100%
+  );
   --stroke-color: rgba(255, 255, 255, 0.5);
   --surface-color: rgba(255, 255, 255, 0.1);
   --surface-color-hover: rgba(255, 255, 255, 0.05);
@@ -15,9 +25,17 @@
   --switch-bg-url: url(./assets/assets/moon-stars.svg);
 }
 
+/*Light Theme Vars*/
+
+/*LightTheme: Variáveis do modo claro */
 .light {
   --text-color: black;
-  --bg-url: url(./assets/assets/bg-mobile-light.jpg);
+  --bg-url: linear-gradient(
+    135deg,
+    rgb(0, 221, 255) 0%,
+    rgb(120, 189, 200) 50%,
+    rgb(93, 117, 119) 100%
+  );
   --stroke-color: rgba(0, 0, 0, 0.5);
   --surface-color: rgba(0, 0, 0, 0.05);
   --surface-color-hover: rgba(0, 0, 0, 0.02);
@@ -25,6 +43,9 @@
   --switch-bg-url: url(./assets/assets/sun.svg);
 }
 
+/*Body*/
+
+/*Body: Define fundo e altura da página */
 body {
   /*
     background-image: url(./assets/assets/bg-mobile.jpg);
@@ -35,15 +56,19 @@ body {
 
   /*background: color image repeat position/size*/
 
-  background: var(--bg-url) no-repeat top center/cover;
+  background: var(--bg-url) no-repeat top center;
   height: 100vh;
 }
 
+/*Body: Fonte e cor padrão de todos os elementos */
 body * {
   font-family: "Inter", sans-serif;
   color: var(--text-color);
 }
 
+/*Container*/
+
+/*Container: Limita largura máxima e centraliza conteúdo */
 #container {
   width: 100%;
   max-width: 588px;
@@ -52,22 +77,29 @@ body * {
   padding: 0 24px;
 }
 
+/* Profile*/
+
+/*Profile: Seção de foto e descrição do usuário */
 #profile {
   text-align: center;
   padding: 24px;
 }
 
+/*Profile: Tamanho da imagem de perfil */
 #profile img {
   width: 112px;
 }
 
+/*Profile: Estilo do texto de descrição */
 #profile p {
   font-weight: 500;
   line-height: 24px;
   margin-top: 8px;
 }
 
-/*Switch*/
+/*Button*/
+
+/*Button: Container do botão de alternar tema */
 #switch {
   position: relative;
   width: 64px;
@@ -75,6 +107,7 @@ body * {
   margin: 4px auto;
 }
 
+/*Button: Botão circular que desliza */
 #switch button {
   width: 32px;
   height: 32px;
@@ -89,6 +122,8 @@ body * {
   transform: translateY(-50%);
   animation: slide-out 0.4s;
 }
+
+/*Button: Trilha com fundo translúcido */
 #switch span {
   display: block;
   height: 24px;
@@ -101,15 +136,19 @@ body * {
   border-radius: 9999px;
 }
 
+/*Button: Animação quando tema claro está ativo */
 .light #switch button {
   animation: slide-in 0.4s forwards;
 }
-/*Links*/
 
+/*Button: Efeito hover no botão de tema */
 #switch button:hover {
   outline: 8px solid var(--highlight-color);
 }
 
+/*Links*/
+
+/*Links: Layout vertical da lista */
 ul {
   list-style: none;
   display: flex;
@@ -118,6 +157,7 @@ ul {
   padding: 24px 0 24px;
 }
 
+/*Links: Estilo base dos links com fundo translúcido */
 ul li a {
   padding: 16px 24px;
 
@@ -137,12 +177,17 @@ ul li a {
   transition: background 0.2s;
 }
 
-/*pseudo-selector*/
+/*pseudo-selector: Aprendido e adicionado por causa de aprendizado com a Rocketseat*/
+
+/*Links: Efeito visual ao passar o mouse */
 ul li a:hover {
   background: var(--surface-color-hover);
   border: 1.5px solid var(--text-color);
 }
 
+/*Socials*/
+
+/*Socials: Container dos ícones de redes sociais */
 #social-links {
   display: flex;
   gap: 32px;
@@ -151,41 +196,45 @@ ul li a:hover {
   padding: 24px 0;
   font-size: 24px;
 }
+
+/*Socials: Estilo base dos ícones */
 #social-links a {
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  transition: outline 0.3s;
+
+  transition: outline 0.4s;
 }
+
+/*Socials: Efeito de destaque ao passar o mouse */
 #social-links a:hover {
   background: var(--highlight-color);
   outline: 16px solid var(--highlight-color);
 }
 
+/*Footer*/
+
+/*Footer: Estilos do rodapé */
 footer {
   text-align: center;
   padding: 24px 0;
   font-size: 14px;
 }
 
+/*Footer: Transição suave para links */
 footer a {
   transition: background 0.5s;
 }
 
+/*Footer: Efeito hover nos links */
 footer a:hover {
   background: rgba(57, 57, 255, 0.5);
 }
-/*medias queries*/
-@media (min-width: 700px) {
-  :root {
-    --bg-url: url(./assets/assets/bg-desktop.jpg);
-  }
-  .light {
-    --bg-url: url(./assets/assets/bg-desktop-light.jpg);
-  }
-}
-/*aniamtions*/
+
+/*Animations*/
+
+/*Animation: Slide para direita */
 @keyframes slide-in {
   from {
     left: 0;
@@ -194,6 +243,8 @@ footer a:hover {
     left: 50%;
   }
 }
+
+/*Animation: Slide para esquerda */
 @keyframes slide-out {
   from {
     left: 50%;
